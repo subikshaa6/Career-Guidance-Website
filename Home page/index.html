@@ -1,1 +1,655 @@
+<html><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet"><style>
+body{  
+padding-top:120px;
+padding-left:0px;
+padding-right:10px;
+padding-bottom:50px;
+background:#7b2cbf;
+color: white;
+font-family: 'Times New Roman', serif;
+}
+.fixed-header{
+    width: 100%;
+    position: fixed;  
+    background:#e8faff;
+    padding: 20px 20px;
+top: 0;
+left: 0;
+right:0
+color: black;
+display: flex;
+z-index: 1000;
+justify-content: left; /* Adjusted to space-between */
+align-items: center;
+}
+.menu-container {
+            /* Added a new container for styling purposes */
+            display: flex;
+            justify-content: flex-end; /* Align the menu to the right */
+            align-items: center;
+            width: 100%;
+            margin-right:5px;
+margin-top:0px;			/* Adjust the margin as needed */
+        }
+.menu {
+  display: block;
+  box-sizing: border-box;
+  background: white;
+  height: 80.7272727273px;
+  width: 80.7272727273px;
+  padding: 33px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+  transition: 1.3s cubic-bezier(0.53, 0, 0.15, 1.3);
+}
+.menu.expanded {
+  width: 250.9090909091px;
+}
 
+span {
+  padding: 9px;
+  white-space: nowrap;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s;
+  transform: rotateY(0deg);
+}
+span:nth-of-type(1) {
+  transition-delay: 0.4s;
+}
+span:nth-of-type(2) {
+  transition-delay: 0.5s;
+}
+span:nth-of-type(3) {
+  transition-delay: 0.6s;
+}
+span:nth-of-type(4) {
+  transition-delay: 0.7s;
+}
+span.hidden {
+  width: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: rotateY(90deg);
+}
+span.hidden:nth-of-type(1) {
+  transition-delay: 0.3s;
+}
+span.hidden:nth-of-type(2) {
+  transition-delay: 0.2s;
+}
+span.hidden:nth-of-type(3) {
+  transition-delay: 0.1s;
+}
+span.hidden:nth-of-type(4) {
+  transition-delay: 0s;
+}
+span a {
+  color: black;
+  text-decoration: none;
+  font-size: 16.3636363636px;
+  transition: 0.3s;
+}
+span a:hover {
+  color: #1d90f5;
+}
+
+.container {
+  position: absolute;
+  top: 22.5px;
+  right: calc( 100% - 72.2727272727px );
+  height: 41.7272727273px;
+  width: 57.8181818182px;
+  transition: 1s;
+}
+.container.close {
+  right: 0;
+}
+
+.toggle {
+  position: relative;
+  height: 41.7272727273px;
+  width: 57.8181818182px;
+  cursor: pointer;
+}
+.toggle:after, .toggle:before {
+  content: "";
+  background: #1d90f5;
+  width: 36px;
+  height: 4.5px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: 1.3s cubic-bezier(0.53, 0, 0.15, 1.3);
+}
+.toggle:before {
+  top: -30%;
+}
+.toggle:after {
+  top: 30%;
+}
+.toggle.close:before {
+  transform: rotate(-225deg);
+  top: 0;
+}
+.toggle.close:after {
+  transform: rotate(225deg);
+  top: 0;
+}
+.animate-charcter {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #4cc9f0 0%,
+    #000814 29%,
+    #5a189a 67%,
+    #240046 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-size: 35px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-color: 3c096c;
+  font-family: 'Times New Roman', serif;
+}
+
+.containers {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  padding-bottom:5px;
+  margin-bottom: -100px;
+}
+.containers::-webkit-scrollbar {
+    width: 10px;
+}
+
+.containers::-webkit-scrollbar-thumb {
+    background-color: #4a148c;
+    border-radius: 5px;
+}
+
+.containers::-webkit-scrollbar-track {
+    background-color: #1a237e;
+}
+.title {
+  position: absolute;
+  padding-bottom:5px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+  color: #ECEFF1;
+  font-size: 40px;
+  font-weight: 600;
+  text-shadow: 0 0 5px black,
+        0 0 10px black,
+        0 0 20px black,
+        0 0 30px black,
+        0 0 40px black,
+        0 0 55px black,
+        0 0 70px black;
+  
+}
+
+.title-small {
+  height: 30px;
+  font-size: 20px;
+  color: #ECEFF1;
+
+}
+
+.img-container {
+  display: inline-block;
+  overflow: hidden;
+  margin-left: -2.8px;
+  margin-right: -2.8px;
+  width: 110px;
+  vertical-align: top;
+  border-radius: 0px 0px 80px 80px;
+  animation-name: flow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: -2s;
+  transition-timing-function: cubic-bezier(0,.57,1,.46);
+  box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.5);
+}
+
+.second-animation {
+  animation-delay: -1.5s;
+}
+
+.third-animation {
+  animation-delay: -1s; 
+}
+
+.fourth-animation {
+  animation-delay: -0.5s; 
+}
+
+.fifth-animation {
+  animation-delay: 0s; 
+}
+
+.sixth-animation {
+  animation-delay: 0.5s; 
+}
+  
+.seventh-animation {
+  animation-delay: 1s;
+}
+
+.img {
+  object-fit: cover;
+  width:100%;
+  height: 65vh;
+  margin-top: 0px;
+  margin-left: 0px
+}
+
+.nba {
+  margin-top: -20px;
+}
+
+@keyframes flow {
+  0% {height: 20%; border-radius: 0px 0px 30px 30px;}
+  50% {height: 50%; border-radius: 0px 0px 100px 100px;}
+  100% {height: 20%; border-radius: 0px 0px 30px 30px;}
+}
+
+@media only screen and (max-width: 1200px) {
+  #img-7 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1028px) {
+  #img-1 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  #img-6 {
+    display: none;
+  }
+}
+.div-9 {
+    margin-top: 0px;
+    width: 100%;
+  }
+  @media (max-width: 991px) {
+    .div-9 {
+      max-width: 100%;
+      margin-top: 0px;
+    }
+  }
+  .div-10 {
+    gap: 20px;
+    display: flex;
+  }
+  @media (max-width: 991px) {
+    .div-10 {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 52%;
+    margin-left: 0px;
+  }
+  @media (max-width: 991px) {
+    .column {
+      width: 100%;
+    }
+  }
+  .img-2 {
+    aspect-ratio: 1.42;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+  }
+  @media (max-width: 991px) {
+    .img-2 {
+      max-width: 100%;
+    }
+  }
+  .column-2 {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 48%;
+    margin-left: 20px;
+  }
+  @media (max-width: 991px) {
+    .column-2 {
+      width: 100%;
+    }
+  }
+  .div-11 {
+    display: flex;
+    margin-top: 15px;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  @media (max-width: 991px) {
+    .div-11 {
+      max-width: 100%;
+    }
+  }
+  .div-12 {
+    color: white;
+    margin-right: -20px;
+    font: 500 50px/64px Outfit, sans-serif;
+	font-family: 'Times New Roman', serif;
+	text-shadow: 0 0 5px black,
+        0 0 10px black,
+        0 0 20px black,
+        0 0 30px black,
+        0 0 40px black,
+        0 0 55px black,
+        0 0 70px black;
+  }
+  @media (max-width: 991px) {
+    .div-12 {
+      max-width: 100%;
+      font-size: 40px;
+      line-height: 57px;
+    }
+  }
+  .div-13 {
+    color: white;
+    margin: 54px -20px 0 0;
+    font: 200 30px/50px Outfit, sans-serif;
+	font-family: 'Times New Roman', serif;
+  }
+  @media (max-width: 991px) {
+    .div-13 {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+hr.style13 {
+	height: 10px;
+	border: 0;
+	width:80%;
+	margin: 0 auto;
+	box-shadow: 0 10px 10px -10px white inset;
+}
+  .flip-box-container {
+            display: flex;
+            justify-content: center; /* Adjust as needed */
+            align-items: center;
+			flex-wrap: wrap;
+			gap: 20px;
+        }
+.flip-box {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  max-width: 250px;
+  padding-right:30px;
+  padding-bottom:30px;
+  padding-left:30px;
+  padding-top:30px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: black;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: #4361ee;
+  color: white;
+  font-size:20px;
+  transform: rotateY(180deg);
+  justify-content: center; /* Align content vertically in the center */
+  align-items: center; /* Align content horizontally in the center */
+}
+@media only screen and (max-width: 900px) {
+            .flip-box {
+                width: 100%; /* Make boxes full width on smaller screens */
+            }
+        }
+		@media only screen and (max-width: 1100px) {
+            .flip-box-container {
+                padding: 10px;
+            }
+        }
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid black;
+}
+
+.button1:hover {
+  background-color: black;
+  color: white;
+}
+
+</style>
+</head>
+<body>
+<div class="fixed-header">
+<img src="logo.png" height="70" width="70">
+      <h3 class="animate-charcter" > &nbsp;GUIDIFY</h3></div>
+<div class="menu-container">
+    <div class="menu">
+
+        <div class="container">
+            <div class="toggle"></div>
+        </div>
+        <span class="hidden"><a href="#">LOGIN </a></span>
+        <span class="hidden"><a href="#">SIGNUP </a></span>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.toggle').on('click', function() {
+                $('.menu').toggleClass('expanded');
+                $('span').toggleClass('hidden');
+                $('.container, .toggle').toggleClass('close');
+            });
+        });
+    </script>
+<div class="containers">
+  <h1 class="title"><br><br><br>Unleash your potential with AI as your partner in success</h1>
+  <h3 class="title-small">In a world powered by AI,
+your career choices are as limitless
+as your imagination.</h3><br><br>
+  <div id="img-1" class="img-container">   
+    <img class="img" src="https://c8.alamy.com/comp/D1EJG4/conceptual-view-light-bulb-abstract-mathematical-symbols-background-D1EJG4.jpg">
+  </div>
+  
+  <div class="img-container second-animation">    
+    <img class="img" src="https://www.shutterstock.com/shutterstock/photos/2091400180/display_1500/stock-vector-physics-doodle-line-set-school-university-outline-subject-vector-illustration-2091400180.jpg">
+  </div>
+  
+  <div class="img-container fourth-animation">    
+    <img class="img nba" src="https://clipart-library.com/images/KLcdEyqT4.jpg">
+  </div>
+
+  <div class="img-container fifth-animation">    
+    <img class="img" src="https://thumbs.dreamstime.com/z/chemistry-future-chemical-reagents-14595282.jpg">
+  </div>  
+  
+  <div id="img-6" class="img-container sixth-animation">    
+    <img class="img" src="https://thumbs.dreamstime.com/b/red-apple-pile-books-illustration-77484055.jpg">
+  </div>  
+    
+  <div id="img-7" class="img-container seventh-animation">    
+    <img class="img" src="https://clipart-library.com/images/pc7Kd8rRi.gif">
+  </div>
+</div>
+<hr class="style13" align="center"><br>
+<div class="div-9">
+    <div class="div-10">
+      <div class="column">
+        <img
+          loading="lazy"
+          srcset="intro.png"
+          class="img-2"
+        />
+      </div>
+      <div class="column-2">
+        <div class="div-11">
+          <div class="div-12">
+            Welcome to Guidify - Your Gateway to Informed Career Choices!
+          </div>
+          <div class="div-13">
+            Empower students with AI-driven counseling at Guidify, offering
+            personalized career insights and revolutionary education backed by
+            the Ministry of Education. Navigate your future confidently with
+            Guidify - Where Careers Meet Capabilities.
+          </div>
+        </div>
+      </div>
+    </div><br><br>
+  </div><div class="flip-box-container">
+  <div class="flip-box">
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <img src="https://blog.hubspot.com/hs-fs/hubfs/personality-tests.jpg?width=595&height=400&name=personality-tests.jpg" alt="Paris" style="width:250px;height:250px">
+    </div>
+    <div class="flip-box-back"><br>
+      <h3>Personality<br>Assessment</h3><br>
+	  <button class="button button1">Get Started</button>
+    </div>
+  </div>
+</div>
+<div class="flip-box">
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <img src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2017/12/19004233/talleres-extracurriculares-cronol1.jpg" alt="Paris" style="width:250px;height:250px">
+    </div>
+    <div class="flip-box-back">
+      <br>
+      <h3>Extra-curricular talent <br>Assessment</h3><br>
+	  <button class="button button1">Get Started</button>
+    </div>
+  </div>
+</div>
+<div class="flip-box">
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <img src="https://png.pngtree.com/png-clipart/20200701/original/pngtree-high-school-students-talk-to-the-teacher-png-image_5415582.jpg" alt="Paris" style="width:250px;height:250px">
+    </div>
+    <div class="flip-box-back"><br>
+      <h3>Secondary level<br>guidance</h3>
+      <p>8th-10th</p><br>
+	  <button class="button button1">Get Started</button>
+    </div>
+  </div>
+</div></div>
+</div><div class="flip-box-container">
+  <div class="flip-box">
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <img src="art.png" alt="Paris" style="width:250px;height:250px">
+    </div>
+    <div class="flip-box-back">
+      <br>
+      <h3>Higher Secondary level<br>guidance</h3>
+      <p>Arts,Commerce streams</p><br>
+	  <button class="button button1">Get Started</button>
+    </div>
+  </div>
+</div>
+<div class="flip-box">
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <img src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2019/08/23163453/Branches-in-MSc-Physics.png" alt="Paris" style="width:250px;height:250px">
+    </div>
+    <div class="flip-box-back">
+      <br>
+      <h3>Higher Secondary level<br>guidance</h3>
+      <p>Science stream</p><br>
+	  <button class="button button1">Get Started</button>
+    </div>
+  </div>
+</div></div>
+</body>
+</html>
